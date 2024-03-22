@@ -1,0 +1,131 @@
+.myheader{
+height: 75px;
+display: flex;
+background-color: rgb(251, 246, 246);
+align-items: center;
+justify-content:space-between;
+position: fixed;
+width: 100%;
+border-style: ridge;
+z-index: 50;
+
+}
+.myheader div{
+    flex: 1;
+}
+::placeholder{
+    color: white;
+}
+.Searcharea{
+    
+
+   width: 350px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+.search-input {
+    
+     color: white;
+   width: 350px;
+   margin-right: 5px;
+   height: 43px;
+   border: none;
+   border-radius: 10px;
+   padding-left: 9px;
+background-color:rgb(43, 42, 42);
+}
+.search-button{
+height: 41px;
+border: none;
+border-radius: 5px;
+background-color: rgb(43, 42, 42);
+color: white;
+cursor: pointer;
+transition: all 0.15s;
+}
+
+.search-button:hover{
+
+   background-color:  rgb(61, 60, 60);
+}
+.search-button:active{
+    background-color:  rgb(43, 42, 42);
+
+}
+
+
+.logoarea{
+
+    width: 400px ;
+height: 60px;
+display: flex;
+align-items: center;
+justify-content: space-between;
+
+}
+.mylogo{
+    margin-right: 40px;
+    max-width: 100%;
+    max-height: 100%;
+}
+.logoarea p1{
+    font-family: Ruwudu;
+    font-weight: bold;
+max-height: 100%;
+max-width: 100%;
+font-size: 50px;
+margin-left: 120px;
+text-align: center;
+color: rgb(43, 42, 42);
+}
+
+.rightarea{
+  
+    width: 400px ;
+height: 60px;
+display: flex;
+align-items: center;
+justify-content: right;
+}
+
+.profile-pic{
+    border: none;
+width: 30px;
+    max-width: 100%;
+    max-height: 100%;
+    
+}
+
+
+.logged-button-span,
+    .shopping-cart-span {
+
+
+    cursor: pointer;
+
+:hover{
+
+opacity: 70%;
+}
+:active{
+
+    opacity: 100%;
+}
+}
+
+    .shopping-cart-span{
+
+        margin-left: 90px;
+        margin-right: 150px;
+    }
+
+
+.shopping-cart-logo{
+
+    width: 28px;
+    
+}
+

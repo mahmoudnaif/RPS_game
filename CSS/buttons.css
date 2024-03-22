@@ -1,0 +1,35 @@
+.mybuttons{
+    margin-top: 300px;
+    margin-left: 100px;
+    margin-right: 100px;
+    display: flex;
+
+    justify-content: space-between;
+
+}
+
+.mybuttons button{
+width: 200px;
+height: 200px;
+border-radius: 20px;
+transition: box-shadow 0.15s;
+border-width: 1px;
+} 
+.mybuttons button:hover{
+
+opacity: 90%;
+cursor: pointer;
+box-shadow: 3px 3px 10px grey,-3px -3px 10px grey;
+} 
+
+.mybuttons button:active{
+  
+ opacity: 75%;
+    } 
+
+
+.mybuttons button img{
+width: 150px;
+height: 150px;
+   
+    } 
