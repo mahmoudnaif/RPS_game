@@ -1,0 +1,17 @@
+.filter-area{
+padding-top: 75px;
+display: flex;
+width: 100%;
+height: 59px;
+}
+
+.categorty-selector{
+width: 120px;
+color: white;
+background-color: rgb(43,42, 42);
+margin-top: 30px;
+margin-left: 60px;
+border: none;
+border-radius: 10px;
+}
+
