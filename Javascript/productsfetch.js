@@ -151,5 +151,15 @@ else{
     
     });
 
+
+    logginghref= document.querySelector(".logged-button-span");
+
+logginghref.addEventListener("click", function(){
+
+window.location.href= "loggingin.html";
+
+});
+
+
     loadproduct('https://fakestoreapi.com/products');
 loadcatergoteis();
