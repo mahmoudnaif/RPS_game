@@ -38,23 +38,20 @@ if(!email.value.match(emailRegex)){
 }
 
 else{
-let isDUplicate= false;
 
-arrayOfUsers.every(user => {
-  if(user.email=== email.value){
-    email.placeholder="Email is already used";
-   isDUplicate= true;
-   return false;
-   
-  }
+let isNotduplicate= true;
+for(let i=0; i<arrayOfUsers.length; i++){
 
-return true;
-});
+if(arrayOfUsers[i].email=== email.value){
+  email.placeholder="Email is already used"
+isNotduplicate = false;
+break;
+}
 
-
-return (!isDUplicate);
+}
 
 
+return isNotduplicate;
 
 
 }
@@ -82,6 +79,7 @@ document.querySelector(".siqnupbut").addEventListener("click", ()=>{
         onsiqnup=true;
     }
     else{
+
       let checkvaliddata=true;
 
     const firstname =  document.querySelector(".firstname");
@@ -112,7 +110,7 @@ document.querySelector(".siqnupbut").addEventListener("click", ()=>{
    if(!emailIsValid(email)){
    
     email.value="";
-    email.classList.add("checkinput");
+    email.classList.add("emailcheck");
     checkvaliddata = false;
     } else{
 
@@ -170,6 +168,10 @@ document.querySelector(".siqnupbut").addEventListener("click", ()=>{
 
 
 
+
+
+
+
 document.querySelector(".loginbut").addEventListener("click", ()=>{
 
   if(onsiqnup){
@@ -178,6 +180,8 @@ document.querySelector(".loginbut").addEventListener("click", ()=>{
   }
   else{
 
+
+    
 
   }
     
