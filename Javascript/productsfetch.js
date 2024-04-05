@@ -1,3 +1,6 @@
+
+
+
 let myProdS;
 
 async function loadproduct(apilink) {
@@ -60,7 +63,7 @@ prodHtml+=`
   
 
 
-myselector = document.querySelector(".categorty-selector");
+let myselector = document.querySelector(".categorty-selector");
 
 async function loadcatergoteis(){
 
@@ -152,7 +155,7 @@ else{
     });
 
 
-    logginghref= document.querySelector(".logged-button-span");
+  let  logginghref= document.querySelector(".logged-button-span");
 
 logginghref.addEventListener("click", function(){
 

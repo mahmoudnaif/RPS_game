@@ -1,4 +1,6 @@
+import {arrayOfUsers} from "./data.js";
 
+console.log(arrayOfUsers);
 function siqnuprender(){
 
     document.getElementById("logincred").classList.remove("loggingarea_login")
@@ -93,7 +95,7 @@ return (password.value.match(passwordRegex));
 
 
 
-arrayOfUsers= (localStorage.getItem("usersdata") === null) ? [] :  JSON.parse(localStorage.getItem("usersdata"));
+
 
 let onsiqnup= false;
 document.querySelector(".siqnupbut").addEventListener("click", ()=>{
@@ -228,7 +230,10 @@ document.querySelector(".loginbut").addEventListener("click", ()=>{
     if(validData && Authenticatelogin(email,password)){
       document.getElementById("overlayID").classList.add("overlay");
 
-      setTimeout(()=>{ 
+      setTimeout(()=>{
+
+
+       
         document.getElementById("overlayID").classList.remove("overlay");
          window.location.href="/index.html";
         
