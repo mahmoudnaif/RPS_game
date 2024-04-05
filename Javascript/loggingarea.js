@@ -29,6 +29,23 @@ function loginrender(){
     
 }
 
+
+function Authenticatelogin(email,password){
+for(let i=0; i<arrayOfUsers.length ;i++){
+if (arrayOfUsers[i].email===email.value && arrayOfUsers[i].password===password.value) { 
+   return true;
+ }
+}
+return false;
+  
+}
+
+function emailIsValidlogin(email){
+  const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+  
+  return email.value.match(emailRegex);
+}
+
 function emailIsValid(email){
   const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
   
@@ -66,6 +83,14 @@ const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/
 
 return (password.value.match(passwordRegex));
 }
+
+
+
+
+
+
+
+
 
 
 arrayOfUsers= (localStorage.getItem("usersdata") === null) ? [] :  JSON.parse(localStorage.getItem("usersdata"));
@@ -138,21 +163,27 @@ document.querySelector(".siqnupbut").addEventListener("click", ()=>{
      }
 
 
+
     if(checkvaliddata){
-    
+      document.getElementById("overlayID").classList.add("overlay");
       arrayOfUsers.push({
           "email": email.value,
           "password": password.value,
           "First_name": firstname.value,
-          "last_name": lastname.value
-
+          "last_name": lastname.value,
+          "pfp": "../imaegs/loggedoutpng.png"
 
 
       })
       localStorage.setItem("usersdata", JSON.stringify(arrayOfUsers));
+     setTimeout(()=>{ 
+      document.getElementById("overlayID").classList.remove("overlay");
       onsiqnup=false;
       loginrender();
-    }
+
+
+    },800)
+  }
     
     
     
@@ -180,10 +211,38 @@ document.querySelector(".loginbut").addEventListener("click", ()=>{
   }
   else{
 
+    const email =  document.querySelector(".email");
+    const password =  document.querySelector(".password");
 
-    
 
-  }
+    let validData= true;
+    if(!emailIsValidlogin(email)){
+      email.value="";
+      email.classList.add("emailcheck");
+      validData = false;
+    }
+    else{
+      email.classList.remove("emailcheck");
+    }
+
+    if(validData && Authenticatelogin(email,password)){
+      document.getElementById("overlayID").classList.add("overlay");
+
+      setTimeout(()=>{ 
+        document.getElementById("overlayID").classList.remove("overlay");
+         window.location.href="/index.html";
+        
+  
+  
+      },800);
+     
+
+
+    }
+
+
+
+}
     
     
     
