@@ -1,5 +1,12 @@
+import {currentUser} from "./data.js";
+console.log(currentUser);
 
-
+if(currentUser.login){
+    document.querySelector(".logged-button-span").innerHTML =   ` <div class="logintext">Log in</div>`+document.querySelector(".logged-button-span").innerHTML ;
+}
+else{
+    
+}
 
 let myProdS;
 

@@ -110,8 +110,89 @@ justify-content: right;
 width: 30px;
     max-width: 100%;
     max-height: 100%;
-    
+   
 }
+
+
+.logged-button-span:hover{
+ 
+    .logintext{
+        opacity: 100%;
+    }
+
+    
+   
+
+    
+
+}
+
+.logged-button-span:hover{
+    .accountlist{
+        top: 50px;
+       
+    }
+}
+
+
+.logged-button-span{
+    display: flex;
+}
+
+.logintext{
+
+    position: relative;
+    top:  19px;
+    right: 5px;
+    opacity: 0%;
+    transition: all .3s;
+}
+
+.accountlist{
+    padding-top: 20px;
+    position: absolute;
+    background-color:  rgb(251, 246, 246);
+    width: 140px;
+    height: 80px;
+    top: -500px;
+    right: 213px;
+    opacity: 100%;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+   
+}
+
+
+
+
+
+.acccenter{
+    margin-top: 10px;
+  border-bottom: 5px solid rgb(43, 42, 42);
+  padding-bottom: 7px;
+
+}
+
+.logout{
+margin-top: 7px;
+
+}
+.accountlist span{
+    color: rgb(43, 42, 42);;
+    
+    font-size: 20px;
+    width: 100%;
+    text-align: center;
+    cursor: pointer;
+   
+}
+
+
+
 
 
 .logged-button-span,

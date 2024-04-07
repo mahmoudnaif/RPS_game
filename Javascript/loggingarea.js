@@ -1,14 +1,16 @@
 import {arrayOfUsers} from "./data.js";
-
 console.log(arrayOfUsers);
+
+
 function siqnuprender(){
 
     document.getElementById("logincred").classList.remove("loggingarea_login")
     document.getElementById("logincred").classList.add("loggingarea_siqnup")
 document.querySelector(".logincredintals").innerHTML=`
-<input class="firstname input" type="text" placeholder=" First name">
-<input class="lastname input" type="text" placeholder=" Last name">
+<input class="firstname input" type="text" placeholder="First name">
+<input class="lastname input" type="text" placeholder="Last name">
 
+<input class="username input" type="text" placeholder="Username">
 <input class="email input" type="email" placeholder="Email">
 <input class="password input" type="password" placeholder="Password">
 <input class="repeatpassword input" type="password" placeholder=" Repeat password">
@@ -61,7 +63,7 @@ else{
 let isNotduplicate= true;
 for(let i=0; i<arrayOfUsers.length; i++){
 
-if(arrayOfUsers[i].email=== email.value){
+if(arrayOfUsers[i].email.toUpperCase()=== email.value.toUpperCase()){
   email.placeholder="Email is already used"
 isNotduplicate = false;
 break;
@@ -78,6 +80,36 @@ return isNotduplicate;
 
 }
 
+function Usernamevalid(username){
+  const userRegex= /^[a-zA-Z0-9]([._](?![._])|[a-zA-Z0-9]){6,18}[a-zA-Z0-9]$/;
+
+  if(!username.value.match(userRegex)){
+    username.placeholder="User must be at least 8 charachters";
+    return false;
+  }
+  
+  else{
+  
+  let isNotduplicate= true;
+  for(let i=0; i<arrayOfUsers.length; i++){
+   
+
+  if(arrayOfUsers[i].username.toUpperCase()=== username.value.toUpperCase()){
+    username.placeholder="username is already used";
+  isNotduplicate = false;
+  break;
+  }
+  
+  }
+  
+  
+  return isNotduplicate;
+  
+  
+  }
+  
+}
+
 
 
 function passwordIsvalid(password){
@@ -85,6 +117,29 @@ const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/
 
 return (password.value.match(passwordRegex));
 }
+
+
+
+function fetchusersdata(email){
+
+  
+    for(let i=0; i<arrayOfUsers.length ;i++){
+    if (arrayOfUsers[i].email===email.value) { 
+
+        let newuser= arrayOfUsers[i];
+        newuser.login=true;
+        return newuser;
+       
+     
+     
+      }
+    }
+    return {
+      login: false
+    };
+      
+    }
+
 
 
 
@@ -111,6 +166,7 @@ document.querySelector(".siqnupbut").addEventListener("click", ()=>{
 
     const firstname =  document.querySelector(".firstname");
     const lastname =  document.querySelector(".lastname");
+    const username = document.querySelector(".username");
     const email =  document.querySelector(".email");
     const password =  document.querySelector(".password");
     const repeatpassword =  document.querySelector(".repeatpassword");
@@ -132,6 +188,7 @@ document.querySelector(".siqnupbut").addEventListener("click", ()=>{
 
     lastname.classList.remove("checkinput")
    }
+   
 
 
    if(!emailIsValid(email)){
@@ -141,8 +198,18 @@ document.querySelector(".siqnupbut").addEventListener("click", ()=>{
     checkvaliddata = false;
     } else{
 
-     email.classList.remove("checkinput")
+     email.classList.remove("emailcheck")
      }
+
+
+    if(!Usernamevalid(username)){
+      username.value="";
+    username.classList.add("checkinput");
+    checkvaliddata = false;
+    }else{
+
+      username.classList.remove("checkinput")
+    }
 
      if(!passwordIsvalid(password)){
       password.value="";
@@ -171,6 +238,7 @@ document.querySelector(".siqnupbut").addEventListener("click", ()=>{
       arrayOfUsers.push({
           "email": email.value,
           "password": password.value,
+           "username": username.value,
           "First_name": firstname.value,
           "last_name": lastname.value,
           "pfp": "../imaegs/loggedoutpng.png"
@@ -232,7 +300,8 @@ document.querySelector(".loginbut").addEventListener("click", ()=>{
 
       setTimeout(()=>{
 
-
+        let user = fetchusersdata(email);
+        localStorage.setItem("currentUser", JSON.stringify(user));
        
         document.getElementById("overlayID").classList.remove("overlay");
          window.location.href="/index.html";

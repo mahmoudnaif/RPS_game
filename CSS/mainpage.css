@@ -54,6 +54,11 @@ margin: auto auto;
     
     }
 
+    .logintext{
+
+        position: relative;
+    }
+
 
     @keyframes transition-up{
         0% {
