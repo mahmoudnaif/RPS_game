@@ -286,15 +286,9 @@ document.querySelector(".loginbut").addEventListener("click", ()=>{
 
 
     let validData= true;
-    if(!emailIsValidlogin(email)){
-      email.value="";
-      email.classList.add("emailcheck");
-      validData = false;
-    }
-    else{
-      email.classList.remove("emailcheck");
-    }
-
+    validData = emailIsValidlogin(email);
+    
+ 
     if(validData && Authenticatelogin(email,password)){
       document.getElementById("overlayID").classList.add("overlay");
 
@@ -309,12 +303,18 @@ document.querySelector(".loginbut").addEventListener("click", ()=>{
   
   
       },800);
+      
      
 
 
     }
 
+    else{
+        email.classList.add("emailcheck");
+        password.classList.add("emailcheck");
 
+        
+    }
 
 }
     

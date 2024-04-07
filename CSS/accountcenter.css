@@ -1,0 +1,32 @@
+.container{
+    margin-top: 35px;
+    margin-bottom: auto;
+    margin-left: auto;
+    margin-right: auto;
+   
+    width: 95%;
+    height: 1500px;
+    display: block;
+    
+}
+
+.managment-area{
+    vertical-align: top;
+    border-radius: 20px;
+    display: inline-block;
+    width: 300px;
+    background-color: white;
+    height: 500px;
+    margin-left: 50px;
+}
+
+.viewingarea{
+    vertical-align: top;
+    border-radius: 30px;
+    display: inline-flex;
+    background-color: white;
+    width: 988px;
+    height: 100%;
+    margin-left: 45px;
+}
+

@@ -35,6 +35,7 @@ else{
 
 
     let logoutbut = document.querySelector(".logout");
+    let accountcenter = document.querySelector(".acccenter");
 
     logoutbut.addEventListener( 'click', () => {
         currentUser.login =false;
@@ -42,7 +43,13 @@ else{
         localStorage.setItem('currentUser', JSON.stringify({login: false}));
 
         loadUserStatus();
-})
+});
+
+    accountcenter.addEventListener('click', () => {
+
+        window.location.href= "accountcenter.html";
+
+    });
 
 
 
