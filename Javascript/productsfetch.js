@@ -39,15 +39,16 @@ else{
     logoutbut.addEventListener( 'click', () => {
         currentUser.login =false;
 
-        localStorage.setItem('userData', JSON.stringify({login: false}));
+        localStorage.setItem('currentUser', JSON.stringify({login: false}));
 
-        setTimeout(loadUserStatus(), 800);
-        
-
-
-
-
+        loadUserStatus();
 })
+
+
+
+
+
+
     }
 }
 let myProdS;
