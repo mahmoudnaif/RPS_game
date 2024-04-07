@@ -1,11 +1,14 @@
 import {currentUser} from "./data.js";
 console.log(currentUser);
 
-if(currentUser.login){
+if(!currentUser.login){
     document.querySelector(".logged-button-span").innerHTML =   ` <div class="logintext">Log in</div>`+document.querySelector(".logged-button-span").innerHTML ;
 }
 else{
-    
+    document.querySelector(".logged-button-span").innerHTML =   `<div class="accountlist">
+    <span class="acccenter">Account center</span>
+    <span class="logout">log out</span>
+</div>`+document.querySelector(".logged-button-span").innerHTML ;   
 }
 
 let myProdS;

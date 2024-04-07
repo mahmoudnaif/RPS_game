@@ -112,6 +112,12 @@ width: 30px;
     max-height: 100%;
    
 }
+.logged-button-span{
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
 
 
 .logged-button-span:hover{
@@ -129,10 +135,11 @@ width: 30px;
 
 .logged-button-span:hover{
     .accountlist{
-        top: 50px;
-       
+        top: 53px;
+       opacity: 100% !important;
     }
 }
+
 
 
 .logged-button-span{
@@ -149,13 +156,13 @@ width: 30px;
 }
 
 .accountlist{
-    padding-top: 20px;
+    padding-top: 17px;
     position: absolute;
     background-color:  rgb(251, 246, 246);
     width: 140px;
     height: 80px;
     top: -500px;
-    right: 213px;
+    right: 260px;
     opacity: 100%;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
