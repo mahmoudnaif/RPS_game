@@ -1,16 +1,55 @@
 import {currentUser} from "./data.js";
 console.log(currentUser);
 
+let innterhtmlForUSER= document.querySelector(".logged-button-span").innerHTML;
+
+function loadUserStatus(){
 if(!currentUser.login){
-    document.querySelector(".logged-button-span").innerHTML =   ` <div class="logintext">Log in</div>`+document.querySelector(".logged-button-span").innerHTML ;
+   
+
+    let  logginghref= document.querySelector(".logged-button-span");
+    document.getElementById("overlayID").classList.add("overlay2nd");
+
+    setTimeout(() => {
+
+        document.querySelector(".logged-button-span").innerHTML =   ` <div class="logintext">Log in</div>`+innterhtmlForUSER;
+
+
+        document.getElementById("overlayID").classList.remove("overlay2nd");
+        logginghref.addEventListener("click", function(){
+           
+            window.location.href= "loggingin.html";
+            
+            });
+
+
+
+    }   ,1000)
+    
 }
 else{
     document.querySelector(".logged-button-span").innerHTML =   `<div class="accountlist">
     <span class="acccenter">Account center</span>
     <span class="logout">log out</span>
-</div>`+document.querySelector(".logged-button-span").innerHTML ;   
-}
+    </div>`+innterhtmlForUSER ; 
 
+
+    let logoutbut = document.querySelector(".logout");
+
+    logoutbut.addEventListener( 'click', () => {
+        currentUser.login =false;
+
+        localStorage.setItem('userData', JSON.stringify({login: false}));
+
+        setTimeout(loadUserStatus(), 800);
+        
+
+
+
+
+})
+    }
+}
 let myProdS;
 
 async function loadproduct(apilink) {
@@ -165,14 +204,9 @@ else{
     });
 
 
-  let  logginghref= document.querySelector(".logged-button-span");
-
-logginghref.addEventListener("click", function(){
-
-window.location.href= "loggingin.html";
-
-});
+ 
 
 
-    loadproduct('https://fakestoreapi.com/products');
+loadproduct('https://fakestoreapi.com/products');
 loadcatergoteis();
+loadUserStatus();
