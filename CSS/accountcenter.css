@@ -15,8 +15,8 @@
     border-radius: 20px;
     display: inline-block;
     width: 300px;
-    background-color: white;
-    height: 500px;
+    background-color: rgb(70, 69, 69);
+    height: 190px;
     margin-left: 50px;
 }
 
@@ -24,9 +24,49 @@
     vertical-align: top;
     border-radius: 30px;
     display: inline-flex;
-    background-color: white;
+    background-color: rgb(70, 69, 69);
     width: 988px;
     height: 100%;
     margin-left: 45px;
 }
 
+.accountInfo, .security, .billingInfo{
+  color: white;
+  margin-top: 9px;
+   
+    width: 100%;
+
+    height: 50px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    }
+
+.accountInfo:hover, .security:hover, .billingInfo:hover{
+    
+   opacity: 70%;
+}
+
+.activearea{
+    background-color: rgb(95, 95, 95);
+}
+
+.profilePic{
+
+width: 100%;
+height: 200px;
+}
+.image-input{
+color:white
+
+}
+
+    
+
+.profilePic img{
+    width: 150px;
+    display: block;
+    margin-bottom: 10px;
+}
