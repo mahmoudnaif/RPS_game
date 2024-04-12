@@ -1,12 +1,50 @@
+
+.warning{
+    position: fixed;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.8);
+    z-index: 10;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.warning p1{
+font-size: 30px;
+}
+
+.warning p1 a{
+    color: rgb(240, 115, 115);
+}
+
+.overlay{
+    display: block;
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    margin-right: 100px;
+    width: 988px;
+    height: 100%;
+    z-index: 10;
+    background-color: white;
+    border-radius: 30px ;
+    opacity: 10%;
+}
+
+
 .container{
-    margin-top: 35px;
+    padding-top: 35px;
+  
     margin-bottom: auto;
     margin-left: auto;
     margin-right: auto;
-   
+  
     width: 95%;
-    height: 1500px;
+    height: auto;
     display: block;
+    
     
 }
 
@@ -15,34 +53,46 @@
     border-radius: 20px;
     display: inline-block;
     width: 300px;
-    background-color: rgb(70, 69, 69);
-    height: 190px;
+    background-color: rgb(66, 63, 63);
     margin-left: 50px;
+    box-shadow: 0 0 20px 1px rgb(0 0 0 / 30%);
 }
 
 .viewingarea{
+    position: absolute;
     vertical-align: top;
     border-radius: 30px;
-    display: inline-flex;
-    background-color: rgb(70, 69, 69);
-    width: 988px;
-    height: 100%;
+    display: inline-block;
+    background-color: rgb(66, 63, 63);
+    width: 888px;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top:30px ;
     margin-left: 45px;
+    box-shadow: 0 0 20px 1px rgb(0 0 0 / 30%);
+    padding-bottom: 35px;
 }
 
 .accountInfo, .security, .billingInfo{
   color: white;
-  margin-top: 9px;
-   
-    width: 100%;
-
+  
+   width: 100%;
     height: 50px;
-    border-radius: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
     }
+
+    .accountInfo{
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+    }
+    .billingInfo{
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+    }
+
 
 .accountInfo:hover, .security:hover, .billingInfo:hover{
     
@@ -52,21 +102,280 @@
 .activearea{
     background-color: rgb(95, 95, 95);
 }
+.First-section{
+    width: 100%;
+    height: 200px;
+    display: block;
+
+}
+
+.myname{
+    display: inline-flex;
+    vertical-align: top;
+     font-family: Ruwudu;
+     font-weight: bold;
+    max-height: 100%;
+    max-width: 100%;
+    font-size: 100px;
+    margin-left: 120px;
+    text-align: center;
+    color: rgb(255, 255, 255);
+    margin-top: 35px;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    
+}
 
 .profilePic{
+height:170px;
+width: 170px;
+position: relative;
+display: inline-flex;
 
-width: 100%;
-height: 200px;
+
 }
-.image-input{
-color:white
+.overlab{
+  
 
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+background-color: rgba(0, 0, 0, 0.5);
+opacity: 0;
+
+color: white;
+transition: all 0.15s;
+border-radius: 20px;
+
+}
+.overlab label{
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.profilePic:hover .overlab{
+    opacity: 1;
 }
 
     
 
 .profilePic img{
-    width: 150px;
+        border-radius: 20px;
+    height: 170px;
     display: block;
     margin-bottom: 10px;
 }
+
+input[type="file"] {
+    display: none;
+  }
+
+
+  .editPersonalInfo,.editAddress{
+display: grid;
+grid-template-columns: auto auto;
+row-gap: 37px;
+width: 100%;
+
+
+  }
+
+  .containinput input{
+
+    width: 291px;
+    height: 40px;
+    display: block;
+    margin-top: 20px;
+    border-radius: 9px;
+    padding-left: 20px;
+    padding-top: 9PX;
+    display: inline;
+    }
+
+
+    .containinput{
+     position: relative;
+     width: 400px;
+        
+    }
+
+    .containinput span{
+        display: inline;
+        position: relative;
+        bottom: 17px;
+        right:  299px;
+        font-size: 13PX;
+        -moz-user-select: -moz-none;
+        -khtml-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        color: rgb(43, 42, 42);
+    }
+
+    .containinput button {
+        position: relative;
+        bottom: 50px;
+        left:  329px;
+        border-radius: 5px;
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+        transition: all 0.15s;
+    }
+
+    .containinput button:hover {
+     background-color: rgb(255, 255, 255, 0.15);
+    }
+    .containinput button:active {
+        background-color: rgb(255, 255, 255, 0.25);
+       }
+
+    .containinput button img{
+        width: 40px;
+        height: 40px;
+
+    }
+/*Securtiy*/
+
+    .mylogo{
+        color: white;
+        display: inline-flex;
+        vertical-align: top;
+        font-family: Ruwudu;
+        font-weight: bold;
+        font-size: 130px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 200px;
+        -khtml-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+       
+
+    }
+
+    .secureYourAccount h1{
+        color: white;
+
+    }
+   
+    .secureYourAccount li{
+        color: white;
+        font-size: 19px;
+        margin-bottom: 5px;
+    }
+/*Billing adress*/
+
+.editAddress{
+
+    margin-left: 60px;
+}
+    .containinput select{
+        width: 316px;
+        height: 50px;
+        display: block;
+        margin-top: 20px;
+        border-radius: 9px;
+        padding-left: 20px;
+        padding-top: 9PX;
+        display: inline;
+        
+        
+        }
+
+        .address_ButtonDiv{
+
+            display: flex;
+            align-items: last baseline;
+            
+        }
+
+        
+        .address_ButtonDiv button{
+            background-color:white;
+            border:none ;
+            margin-left: 119px;
+            width: 200px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 15px;
+            counter-reset: rgb(43,42,42);
+            font-size: 15px;
+        }
+
+        .address_ButtonDiv button:hover{
+          opacity: 88%;
+        }
+     
+    /*Edit in securtiy area*/
+    .passwordContainer input{
+
+        width: 291px;
+        height: 40px;
+        display: block;
+        margin-top: 20px;
+        border-radius: 9px;
+        padding-left: 20px;
+        padding-top: 9PX;
+        display: inline;
+        }
+    
+    
+        .passwordContainer{
+         position: relative;
+         width: 100%;
+        
+        
+            
+        }
+    
+        .passwordContainer span{
+            display: inline;
+            position: relative;
+            bottom: 17px;
+            right:  299px;
+            font-size: 13PX;
+            -moz-user-select: -moz-none;
+            -khtml-user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            color: rgb(43, 42, 42);
+        }
+    
+        .passwordContainer button {
+            position: relative;
+            top: 10px;
+            right: 90px;
+            border-radius: 5px;
+            border: none;
+            background-color: transparent;
+            cursor: pointer;
+            transition: all 0.15s;
+        }
+    
+        .passwordContainer button:hover {
+         background-color: rgb(255, 255, 255, 0.15);
+        }
+        .passwordContainer button:active {
+            background-color: rgb(255, 255, 255, 0.25);
+           }
+    
+        .passwordContainer button img{
+            width: 40px;
+            height: 40px;
+    
+        }
