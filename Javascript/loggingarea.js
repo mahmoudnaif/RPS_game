@@ -241,7 +241,7 @@ document.querySelector(".siqnupbut").addEventListener("click", ()=>{
            "username": username.value,
           "First_name": firstname.value,
           "last_name": lastname.value,
-          "pfp": "../imaegs/loggedoutpng.png"
+          "pfp": "./imaegs/noprofileuser.jpg"
 
 
       })

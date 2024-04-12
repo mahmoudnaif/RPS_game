@@ -1,4 +1,4 @@
-let arrayOfUsers= (localStorage.getItem("usersdata") === null) ? [] :  JSON.parse(localStorage.getItem("usersdata"));
+export let arrayOfUsers= (localStorage.getItem("usersdata") === null) ? [] :  JSON.parse(localStorage.getItem("usersdata"));
 export let currentUser= (localStorage.getItem("currentUser") === null)? {logged: false} : JSON.parse(localStorage.getItem('currentUser'));
 
 export function EditData(edit_value, typeofedit){
@@ -95,6 +95,22 @@ return editSuccess;
 }
 
 
+export function editpicture(newpfp){
+
+    for(let i=0; i < arrayOfUsers.length; i++){
+        if(currentUser.email=== arrayOfUsers[i].email){
+            arrayOfUsers[i].pfp= newpfp;
+            currentUser.pfp= newpfp;
+            localStorage.setItem("currentUser", JSON.stringify(currentUser));
+            localStorage.setItem("usersdata", JSON.stringify(arrayOfUsers));
+            break;
+
+        }
+        
+       }
+}
+
+
   
   function emailIsValid(email){
     const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
@@ -152,3 +168,5 @@ function Usernamevalid(username){
   }
   
 }
+
+

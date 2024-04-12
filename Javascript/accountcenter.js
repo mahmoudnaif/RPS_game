@@ -1,5 +1,5 @@
-import {currentUser, EditData} from "./data.js";
-console.log(currentUser);
+import {currentUser, EditData, editpicture} from "./data.js";
+
 
 if(!currentUser.login){
     document.body.innerHTML= `   <div class="warning">
@@ -27,7 +27,7 @@ if(!currentUser.login){
           <div class="overlab">
               <label for="image-input"><p1>Change picture</p1></label>
           </div>
-          <label for="image-input"><img src="images/noprofileuser.jpg"></label>
+          <label for="image-input"><img class="myprofilepic" src=${currentUser.pfp}></label>
           
           <input id="image-input" type="file">
      </div>
@@ -647,7 +647,7 @@ button.addEventListener("click", () =>{
 
             active_Editing=false;
             current_Editing="";
-            document.getElementById("overlayID").classList.remove("overlay");
+          
 
         setTimeout(()=>{
             document.getElementById(button.getAttribute("data-ID")).classList.remove("DIDNTCAHNGE");
@@ -682,3 +682,23 @@ button.addEventListener("click", () =>{
 
 
 
+document.getElementById("image-input").addEventListener("change",() =>{
+const readimg = new FileReader();
+
+readimg.readAsDataURL(document.getElementById("image-input").files[0]);
+document.getElementById("overlayID").classList.add("overlay");
+readimg.addEventListener("load",()=>{
+    const imgurl= readimg.result;
+    document.getElementById("overlayID").classList.remove("overlay");
+    document.querySelector(".myprofilepic").src=imgurl;
+    editpicture(imgurl);
+
+
+
+
+
+
+});
+
+
+});
