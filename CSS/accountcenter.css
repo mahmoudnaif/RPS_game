@@ -380,3 +380,23 @@ width: 100%;
             height: 40px;
     
         }
+
+    /*editing phase*/
+
+    .activeediting{
+
+        background-color: rgba(94, 255, 8, 0.964) !important;
+    }
+
+    .FORBIDEDIT{
+        background-color: rgb(255, 255, 255, 0.55);
+    pointer-events: none;
+    }
+
+
+    .DIDNTCAHNGE{
+        background-color: rgba(255, 0, 0, 1)
+        
+    }
+
+    

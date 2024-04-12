@@ -1,4 +1,5 @@
-import {currentUser} from "./data.js";
+import {currentUser, EditData} from "./data.js";
+console.log(currentUser);
 
 if(!currentUser.login){
     document.body.innerHTML= `   <div class="warning">
@@ -13,6 +14,8 @@ if(!currentUser.login){
 
     document.querySelector(".viewingarea").innerHTML=` 
     
+    
+
     <div id="overlayID" >
         
     </div>
@@ -43,35 +46,35 @@ if(!currentUser.login){
 <div class="editPersonalInfo">
   
   <div class="containinput">
-      <input id="change_Email">
+      <input class="FORBIDEDIT" id="change_Email">
       <span>Email address</span>
-      <button>
+      <button class="editing_Buttons" data-ID="change_Email">
           <img src="images/editimg.png">
       </button>
   </div>
 
 
   <div class="containinput">
-      <input id="change_UserName">
+      <input class="FORBIDEDIT" id="change_UserName">
       <span>User name</span>
-      <button>
+      <button class="editing_Buttons" data-ID="change_UserName">
           <img src="images/editimg.png">
       </button>
   </div>
   
   <div class="containinput">
-      <input id="change_FirstName">
+      <input class="FORBIDEDIT" id="change_FirstName">
       <span>First name</span>
-      <button>
+      <button class="editing_Buttons" data-ID="change_FirstName">
           <img src="images/editimg.png">
       </button>
   </div>
 
 
   <div class="containinput">
-      <input id="change_LastName">
+      <input class="FORBIDEDIT" id="change_LastName">
       <span>Last name</span>
-      <button>
+      <button class="editing_Buttons" data-ID="change_LastName">
           <img src="images/editimg.png">
       </button>
   </div>
@@ -83,7 +86,11 @@ if(!currentUser.login){
   
 </div>`;
     
+document.getElementById("change_Email").value= currentUser.email[0]+"********"+ currentUser.email.substring(currentUser.email.indexOf('@')-1) ;
 
+document.getElementById("change_UserName").value= currentUser.username;
+document.getElementById("change_FirstName").value= currentUser.First_name;
+document.getElementById("change_LastName").value= currentUser.last_name;
 
 
 
@@ -108,7 +115,8 @@ document.querySelector(".accountInfo").addEventListener("click", () => {
         document.getElementById("overlayID").classList.remove("overlay");
 
     document.querySelector(".viewingarea").innerHTML=` 
-    
+
+
     <div id="overlayID" >
         
     </div>
@@ -139,35 +147,35 @@ document.querySelector(".accountInfo").addEventListener("click", () => {
 <div class="editPersonalInfo">
   
   <div class="containinput">
-      <input id="change_Email">
+      <input class="FORBIDEDIT" id="change_Email">
       <span>Email address</span>
-      <button>
+      <button class="editing_Buttons" data-ID="change_Email">
           <img src="images/editimg.png">
       </button>
   </div>
 
 
   <div class="containinput">
-      <input id="change_UserName">
+      <input class="FORBIDEDIT" id="change_UserName">
       <span>User name</span>
-      <button>
+      <button class="editing_Buttons" data-ID="change_UserName">
           <img src="images/editimg.png">
       </button>
   </div>
   
   <div class="containinput">
-      <input id="change_FirstName">
+      <input class="FORBIDEDIT" id="change_FirstName">
       <span>First name</span>
-      <button>
+      <button class="editing_Buttons" data-ID="change_FirstName">
           <img src="images/editimg.png">
       </button>
   </div>
 
 
   <div class="containinput">
-      <input id="change_LastName">
+      <input class="FORBIDEDIT" id="change_LastName">
       <span>Last name</span>
-      <button>
+      <button class="editing_Buttons" data-ID="change_LastName">
           <img src="images/editimg.png">
       </button>
   </div>
@@ -179,7 +187,11 @@ document.querySelector(".accountInfo").addEventListener("click", () => {
   
 </div>`;
         
+document.getElementById("change_Email").value= currentUser.email[0]+"********"+ currentUser.email.substring(currentUser.email.indexOf('@')-1) ;
 
+document.getElementById("change_UserName").value= currentUser.username;
+document.getElementById("change_FirstName").value= currentUser.First_name;
+document.getElementById("change_LastName").value= currentUser.last_name;
 
 },800)
     }
@@ -567,3 +579,106 @@ document.querySelector(".billingInfo").addEventListener("click", () => {
     }
 
 });
+
+
+
+
+
+
+
+
+
+
+/*Button click JS*/
+let active_Editing=false;
+let current_Editing="";
+
+
+document.querySelectorAll(".editing_Buttons").forEach(button =>{
+
+button.addEventListener("click", () =>{
+    if(!active_Editing){
+        active_Editing=true;
+        current_Editing= button.getAttribute("data-ID");
+        button.classList.add("activeediting");
+        document.getElementById(button.getAttribute("data-ID")).value="";
+        document.getElementById(button.getAttribute("data-ID")).classList.remove("FORBIDEDIT");
+    }
+
+    else if(current_Editing==button.getAttribute("data-ID")){
+        
+        if(EditData(document.getElementById(button.getAttribute("data-ID")).value,button.getAttribute("data-ID") )){
+
+        document.getElementById("overlayID").classList.add("overlay");
+
+        setTimeout(()=>{
+
+            active_Editing=false;
+            current_Editing="";
+            button.classList.remove("activeediting");
+            document.getElementById(button.getAttribute("data-ID")).classList.add("FORBIDEDIT");
+
+            document.getElementById("change_Email").value= currentUser.email[0]+"********"+ currentUser.email.substring(currentUser.email.indexOf('@')-1) ;
+            document.getElementById("change_UserName").value= currentUser.username;
+            document.getElementById("change_FirstName").value= currentUser.First_name;
+            document.getElementById("change_LastName").value= currentUser.last_name;
+
+            active_Editing=false;
+            current_Editing="";
+            document.getElementById("overlayID").classList.remove("overlay");
+
+
+
+
+        },800)
+    }
+
+    else{
+          document.getElementById(button.getAttribute("data-ID")).classList.add("DIDNTCAHNGE");
+             active_Editing=false;
+            current_Editing="";
+            button.classList.remove("activeediting");
+            document.getElementById(button.getAttribute("data-ID")).classList.add("FORBIDEDIT");
+
+            document.getElementById("change_Email").value= currentUser.email[0]+"********"+ currentUser.email.substring(currentUser.email.indexOf('@')-1) ;
+            document.getElementById("change_UserName").value= currentUser.username;
+            document.getElementById("change_FirstName").value= currentUser.First_name;
+            document.getElementById("change_LastName").value= currentUser.last_name;
+
+            active_Editing=false;
+            current_Editing="";
+            document.getElementById("overlayID").classList.remove("overlay");
+
+        setTimeout(()=>{
+            document.getElementById(button.getAttribute("data-ID")).classList.remove("DIDNTCAHNGE");
+        },500)
+
+
+
+
+    }
+
+
+           
+        }
+
+    
+
+    
+
+    
+
+
+
+});
+
+
+
+});
+
+
+
+/*Picture Change*/
+
+
+
