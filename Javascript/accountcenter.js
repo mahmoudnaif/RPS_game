@@ -26,7 +26,7 @@ function LoadAccountInfo(){
           <div class="overlab">
               <label for="image-input"><p1>Change picture</p1></label>
           </div>
-          <label for="image-input"><img src="images/noprofileuser.jpg"></label>
+          <label for="image-input"><img class="myprofilepic" src=${currentUser.pfp}></label>
           
           <input id="image-input" type="file">
      </div>
@@ -620,7 +620,13 @@ button.addEventListener("click", () =>{
 
 
 
+function isFileImage(file) {
+    return file && file['type'].split('/')[0] === 'image';
+}
+
 document.getElementById("image-input").addEventListener("change",() =>{
+if(isFileImage(document.getElementById("image-input").files[0])){
+    
 const readimg = new FileReader();
 
 readimg.readAsDataURL(document.getElementById("image-input").files[0]);
@@ -638,7 +644,15 @@ readimg.addEventListener("load",()=>{
 
 });
 
+}
 
+else{
+    
+
+
+
+
+}
 });
 
 }
