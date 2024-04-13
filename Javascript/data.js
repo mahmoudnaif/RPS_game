@@ -201,3 +201,52 @@ return success;
 }
 
 
+/*Adress functions*/
+export function EditAdress(Countryselector, governorate, Street_Name, home_address, pistol_Code ){
+let editSuccess= false;
+
+if(Countryselector.value!="" && governorate.value!="" && Street_Name.value!="" && home_address.value!="" && !isNaN(pistol_Code.value)){
+
+  for(let i=0; i < arrayOfUsers.length; i++){
+
+    if(currentUser.email=== arrayOfUsers[i].email){
+
+        arrayOfUsers[i].billingAdress= {
+            "Countryselector": Countryselector.value,
+            "countryIndex": Countryselector.selectedIndex,
+            "governorate": governorate.value,
+            "Street_Name": Street_Name.value,
+            "home_address": home_address.value,
+            "pistol_Code": pistol_Code.value  
+
+
+
+        };
+        currentUser.billingAdress= {
+          "Countryselector": Countryselector.value,
+          "countryIndex": Countryselector.selectedIndex,
+          "governorate": governorate.value,
+          "Street_Name": Street_Name.value,
+          "home_address": home_address.value,
+          "pistol_Code": pistol_Code.value  
+
+
+
+      };
+    
+        localStorage.setItem("currentUser", JSON.stringify(currentUser));
+        localStorage.setItem("usersdata", JSON.stringify(arrayOfUsers));
+        break;
+
+    }
+    
+   }
+   editSuccess= true;
+}
+
+return editSuccess;
+
+
+
+
+}

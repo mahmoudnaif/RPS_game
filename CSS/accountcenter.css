@@ -315,7 +315,7 @@ width: 100%;
             justify-content: center;
             align-items: center;
             border-radius: 15px;
-            counter-reset: rgb(43,42,42);
+            color: rgb(43,42,42);
             font-size: 15px;
         }
 
@@ -393,6 +393,7 @@ width: 100%;
     .FORBIDEDIT{
         background-color: rgb(255, 255, 255, 0.55);
     pointer-events: none;
+    
     }
 
 

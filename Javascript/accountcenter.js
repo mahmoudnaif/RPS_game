@@ -1,4 +1,5 @@
-import {currentUser, EditData, editpicture, passwordregex, changepassword} from "./data.js";
+import {currentUser, EditData, editpicture, passwordregex, changepassword, EditAdress} from "./data.js";
+console.log(currentUser);
 
 function LoadAccountInfo(){
 
@@ -157,54 +158,7 @@ function loadsecurity(){
 
 
 
-
-
-
-
-if(!currentUser.login){
-    document.body.innerHTML= `   <div class="warning">
-    <p1>Please <a href="loggingin.html">log in</a> first</p1>
-
-</div>
-`
-
-
-}else{
-    document.querySelector(".viewingarea").style.height= "400px";
-
-    LoadAccountInfo();
-    setTimeout(( )=>{    document.querySelector(".viewingarea").style.height= "auto";},800)
-
-}
-
-
-
-
-
-
-document.querySelector(".accountInfo").addEventListener("click", () => {
-
-    if(!document.querySelector(".accountInfo").classList.contains("activearea")){
-        LoadAccountInfo();
-    }
-});
-
-
-
-document.querySelector(".security").addEventListener("click", () => {
-
-    if(!document.querySelector(".security").classList.contains("activearea")){
-    
-  
-        loadsecurity();
-
-    }
-
-});
-
-document.querySelector(".billingInfo").addEventListener("click", () => {
-    if(!document.querySelector(".billingInfo").classList.contains("activearea")){
-    
+function LoadBillingAdress(){
     document.querySelector(".accountInfo").classList.remove("activearea");
     document.querySelector(".security").classList.remove("activearea");
     document.querySelector(".billingInfo").classList.add("activearea");
@@ -223,7 +177,7 @@ document.querySelector(".billingInfo").addEventListener("click", () => {
     <div class="editAddress">
   
     <div class="containinput">
-        <select class="select_Country">
+        <select class="select_Country FORBIDEDIT adressinputs">
             <option value="" disabled selected hidden>None</option>
             <option value="Afghanistan">Afghanistan</option>
             <option value="Åland Islands">Åland Islands</option>
@@ -475,30 +429,30 @@ document.querySelector(".billingInfo").addEventListener("click", () => {
     </div>
   
   
-    <div class="containinput">
-        <input id="governorate">
+    <div class="containinput ">
+        <input class="FORBIDEDIT adressinputs" id="governorate">
         <span>governoratee</span>
     </div>
     
     <div class="containinput">
-        <input id="Street_Name">
+        <input class="FORBIDEDIT adressinputs" id="Street_Name">
         <span>Street name</span>
        
     </div>
   
   
     <div class="containinput">
-        <input id="home_address">
+        <input class="FORBIDEDIT adressinputs" id="home_address">
         <span>Building no</span>
     </div>
 
     <div class="containinput">
-        <input id="pistol_Code">
+        <input class="FORBIDEDIT adressinputs" id="pistol_Code">
         <span>Pistol code</span>
     </div>
   
     <div class="address_ButtonDiv">
-      <button class="editAddress"><p1>Edit address</p1></button>
+      <button class="editAddressbut"><p1>Edit address</p1></button>
     </div>
   
     
@@ -510,11 +464,75 @@ document.querySelector(".billingInfo").addEventListener("click", () => {
     
     `;
 
+     document.querySelector(".select_Country").selectedIndex= currentUser.billingAdress.countryIndex;
+   document.getElementById("governorate").value= currentUser.billingAdress.governorate;
+   document.getElementById("Street_Name").value= currentUser.billingAdress.Street_Name;
+    document.getElementById("home_address").value= currentUser.billingAdress.home_address;
+    document.getElementById("pistol_Code").value= currentUser.billingAdress.pistol_Code;
+
+
+
+    loadEventsforBillingAdress();
 
 },800)
 
+
+
+
+
+}
+
+
+
+
+
+
+
+if(!currentUser.login){
+    document.body.innerHTML= `   <div class="warning">
+    <p1>Please <a href="loggingin.html">log in</a> first</p1>
+
+</div>
+`
+
+
+}else{
+    document.querySelector(".viewingarea").style.height= "400px";
+
+    LoadAccountInfo();
+    setTimeout(( )=>{    document.querySelector(".viewingarea").style.height= "auto";},800)
+
+}
+
+
+
+
+
+
+document.querySelector(".accountInfo").addEventListener("click", () => {
+
+    if(!document.querySelector(".accountInfo").classList.contains("activearea")){
+        LoadAccountInfo();
+    }
+});
+
+
+
+document.querySelector(".security").addEventListener("click", () => {
+
+    if(!document.querySelector(".security").classList.contains("activearea")){
+    
+  
+        loadsecurity();
+
     }
 
+});
+
+document.querySelector(".billingInfo").addEventListener("click", () => {
+    if(!document.querySelector(".billingInfo").classList.contains("activearea")){
+        LoadBillingAdress();
+    }
 });
 
 
@@ -779,6 +797,98 @@ function loadEventsforSecurity(){
 
     });
 
+
+
+
+}
+
+
+
+
+
+
+function loadEventsforBillingAdress(){
+    let active_editing= false;
+    document.querySelector(".editAddressbut").addEventListener("click",()=>{
+
+        if(!active_editing){   
+            document.querySelector(".editAddressbut").classList.add("activeediting");
+
+        document.querySelectorAll(".adressinputs").forEach((selected)=>{
+            selected.classList.remove("FORBIDEDIT");
+
+        });
+        active_editing=true;
+        }
+        else{
+              const Countryselector  = document.querySelector(".select_Country");
+              const governorate = document.getElementById("governorate");
+              const Street_Name = document.getElementById("Street_Name");
+              const home_address = document.getElementById("home_address");
+              const pistol_Code= document.getElementById("pistol_Code");
+
+              if(Countryselector.value===""){
+                Countryselector.classList.add("checkinput");
+        }
+        else{
+            Countryselector.classList.remove("checkinput");
+
+        }
+        if(governorate.value===""){
+            governorate.classList.add("checkinput");
+        }
+        else{
+        governorate.classList.remove("checkinput");
+
+        }
+        if(Street_Name.value===""){
+            Street_Name.classList.add("checkinput");
+        }
+        else{
+        Street_Name.classList.remove("checkinput");
+
+        }
+        if(home_address.value===""){
+            home_address.classList.add("checkinput");
+        }
+        else{
+        home_address.classList.remove("checkinput");
+
+        }
+        if(isNaN(pistol_Code.value) || pistol_Code.value==="" ){
+            
+            pistol_Code.classList.add("checkinput");
+        }
+        else{
+        pistol_Code.classList.remove("checkinput");
+
+        }
+
+            if(EditAdress(Countryselector, governorate, Street_Name, home_address, pistol_Code)){
+                active_editing=false;
+                document.getElementById("overlayID").classList.add("overlay");
+
+                setTimeout(()=>{
+                    document.getElementById("overlayID").classList.remove("overlay");
+                    document.querySelector(".editAddressbut").classList.remove("activeediting");
+
+                    document.querySelectorAll(".adressinputs").forEach((selected)=>{
+                        selected.classList.add("FORBIDEDIT");
+            
+                    });
+                 
+                },800)
+                
+
+
+            }
+         
+          
+
+
+        }
+
+    });
 
 
 
