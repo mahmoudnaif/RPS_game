@@ -396,9 +396,13 @@ width: 100%;
     }
 
 
-    .DIDNTCAHNGE{
-        background-color: rgba(255, 0, 0, 1)
-        
-    }
 
+
+    .checkinput{
+
+        background-color: rgb(240, 210, 210) !important;
+        
+        
+        
+        }
     

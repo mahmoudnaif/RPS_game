@@ -170,3 +170,34 @@ function Usernamevalid(username){
 }
 
 
+export function passwordregex(password){
+  
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
+    
+    return (password.match(passwordRegex));
+
+}
+
+export function changepassword(password, repeatpass){
+  let success= false;
+if(passwordregex(password)  && password===repeatpass){
+  success=true;
+  for(let i=0; i < arrayOfUsers.length; i++){
+    if(currentUser.email=== arrayOfUsers[i].email){
+        arrayOfUsers[i].password= password;
+        currentUser.password= password;
+        localStorage.setItem("currentUser", JSON.stringify(currentUser));
+        localStorage.setItem("usersdata", JSON.stringify(arrayOfUsers));
+        break;
+
+    }
+    
+   }
+
+}
+
+return success;
+
+}
+
+

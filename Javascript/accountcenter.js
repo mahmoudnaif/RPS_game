@@ -1,110 +1,8 @@
-import {currentUser, EditData, editpicture} from "./data.js";
+import {currentUser, EditData, editpicture, passwordregex, changepassword} from "./data.js";
+
+function LoadAccountInfo(){
 
 
-if(!currentUser.login){
-    document.body.innerHTML= `   <div class="warning">
-    <p1>Please <a href="loggingin.html">log in</a> first</p1>
-
-</div>
-`
-
-
-}else{
-    document.querySelector(".accountInfo").classList.add("activearea");
-
-    document.querySelector(".viewingarea").innerHTML=` 
-    
-    
-
-    <div id="overlayID" >
-        
-    </div>
-    
-    
-    <div class="First-section">
-
-    <div class="profilePic">
-          <div class="overlab">
-              <label for="image-input"><p1>Change picture</p1></label>
-          </div>
-          <label for="image-input"><img class="myprofilepic" src=${currentUser.pfp}></label>
-          
-          <input id="image-input" type="file">
-     </div>
-
-     <div class="myname">
-
-      <p1 class="abdoneasha" lang="ar" dir="rtl">
-          عبدو نقاشة
-       </p1>
-  </div>
-
-
-
-</div>
-
-<div class="editPersonalInfo">
-  
-  <div class="containinput">
-      <input class="FORBIDEDIT" id="change_Email">
-      <span>Email address</span>
-      <button class="editing_Buttons" data-ID="change_Email">
-          <img src="images/editimg.png">
-      </button>
-  </div>
-
-
-  <div class="containinput">
-      <input class="FORBIDEDIT" id="change_UserName">
-      <span>User name</span>
-      <button class="editing_Buttons" data-ID="change_UserName">
-          <img src="images/editimg.png">
-      </button>
-  </div>
-  
-  <div class="containinput">
-      <input class="FORBIDEDIT" id="change_FirstName">
-      <span>First name</span>
-      <button class="editing_Buttons" data-ID="change_FirstName">
-          <img src="images/editimg.png">
-      </button>
-  </div>
-
-
-  <div class="containinput">
-      <input class="FORBIDEDIT" id="change_LastName">
-      <span>Last name</span>
-      <button class="editing_Buttons" data-ID="change_LastName">
-          <img src="images/editimg.png">
-      </button>
-  </div>
-  
-
-
-  
-
-  
-</div>`;
-    
-document.getElementById("change_Email").value= currentUser.email[0]+"********"+ currentUser.email.substring(currentUser.email.indexOf('@')-1) ;
-
-document.getElementById("change_UserName").value= currentUser.username;
-document.getElementById("change_FirstName").value= currentUser.First_name;
-document.getElementById("change_LastName").value= currentUser.last_name;
-
-
-
-}
-
-
-
-
-
-
-document.querySelector(".accountInfo").addEventListener("click", () => {
-
-    if(!document.querySelector(".accountInfo").classList.contains("activearea")){
-    
     document.querySelector(".accountInfo").classList.add("activearea");
     document.querySelector(".security").classList.remove("activearea");
     document.querySelector(".billingInfo").classList.remove("activearea");
@@ -113,7 +11,7 @@ document.querySelector(".accountInfo").addEventListener("click", () => {
 
     setTimeout(()=>{
         document.getElementById("overlayID").classList.remove("overlay");
-
+        
     document.querySelector(".viewingarea").innerHTML=` 
 
 
@@ -186,6 +84,7 @@ document.querySelector(".accountInfo").addEventListener("click", () => {
 
   
 </div>`;
+loadEventsforAccountInfo();
         
 document.getElementById("change_Email").value= currentUser.email[0]+"********"+ currentUser.email.substring(currentUser.email.indexOf('@')-1) ;
 
@@ -196,14 +95,9 @@ document.getElementById("change_LastName").value= currentUser.last_name;
 },800)
     }
 
-});
 
+function loadsecurity(){
 
-
-document.querySelector(".security").addEventListener("click", () => {
-
-    if(!document.querySelector(".security").classList.contains("activearea")){
-    
     document.querySelector(".accountInfo").classList.remove("activearea");
     document.querySelector(".security").classList.add("activearea");
     document.querySelector(".billingInfo").classList.remove("activearea");
@@ -233,9 +127,9 @@ document.querySelector(".security").addEventListener("click", () => {
       
 
             <div class="containinput" >
-                <input id="change_Password">
-                <span>Passwords</span>
-                <button>
+                <input type="password" class="FORBIDEDIT" id="change_Password">
+                <span class="password_Span">Password</span>
+                <button class="passButton">
                     <img src="images/editimg.png">
                 </button>
           </div>
@@ -256,10 +150,53 @@ document.querySelector(".security").addEventListener("click", () => {
               
           </div>
               `;
+              loadEventsforSecurity();
+
+},800);
+}
 
 
-},800)
 
+
+
+
+
+if(!currentUser.login){
+    document.body.innerHTML= `   <div class="warning">
+    <p1>Please <a href="loggingin.html">log in</a> first</p1>
+
+</div>
+`
+
+
+}else{
+    document.querySelector(".viewingarea").style.height= "400px";
+
+    LoadAccountInfo();
+    setTimeout(( )=>{    document.querySelector(".viewingarea").style.height= "auto";},800)
+
+}
+
+
+
+
+
+
+document.querySelector(".accountInfo").addEventListener("click", () => {
+
+    if(!document.querySelector(".accountInfo").classList.contains("activearea")){
+        LoadAccountInfo();
+    }
+});
+
+
+
+document.querySelector(".security").addEventListener("click", () => {
+
+    if(!document.querySelector(".security").classList.contains("activearea")){
+    
+  
+        loadsecurity();
 
     }
 
@@ -590,6 +527,7 @@ document.querySelector(".billingInfo").addEventListener("click", () => {
 
 
 /*Button click JS*/
+function loadEventsforAccountInfo(){
 let active_Editing=false;
 let current_Editing="";
 
@@ -634,11 +572,11 @@ button.addEventListener("click", () =>{
     }
 
     else{
-          document.getElementById(button.getAttribute("data-ID")).classList.add("DIDNTCAHNGE");
+          document.getElementById(button.getAttribute("data-ID")).classList.add("FORBIDEDIT");
              active_Editing=false;
             current_Editing="";
             button.classList.remove("activeediting");
-            document.getElementById(button.getAttribute("data-ID")).classList.add("FORBIDEDIT");
+            document.getElementById(button.getAttribute("data-ID")).classList.add("checkinput");
 
             document.getElementById("change_Email").value= currentUser.email[0]+"********"+ currentUser.email.substring(currentUser.email.indexOf('@')-1) ;
             document.getElementById("change_UserName").value= currentUser.username;
@@ -650,7 +588,7 @@ button.addEventListener("click", () =>{
           
 
         setTimeout(()=>{
-            document.getElementById(button.getAttribute("data-ID")).classList.remove("DIDNTCAHNGE");
+            document.getElementById(button.getAttribute("data-ID")).classList.remove("checkinput");
         },500)
 
 
@@ -702,3 +640,132 @@ readimg.addEventListener("load",()=>{
 
 
 });
+
+}
+
+
+
+function loadEventsforSecurity(){
+
+    document.getElementById("change_Password").value="************";
+
+    let active_Editing=false;
+    let enteredoldpass=false;
+    document.querySelector(".passButton").addEventListener("click",()=>{
+        if(!active_Editing){
+            document.getElementById("change_Password").value="";
+        active_Editing=true;
+        document.querySelector(".passButton").classList.add("activeediting");
+        document.querySelector(".password_Span").innerHTML=`Old password`;
+        document.getElementById("change_Password").classList.remove("FORBIDEDIT");
+        }
+        else{
+          
+                if(document.getElementById("change_Password").value===currentUser.password){
+                    enteredoldpass= true;
+
+                    document.getElementById("overlayID").classList.add("overlay");
+                    setTimeout(()=>{
+                        document.getElementById("overlayID").classList.remove("overlay");
+                        document.querySelector(".containinput").classList.add("passwordContainer");
+                        document.querySelector(".passwordContainer").classList.remove("containinput");
+                        
+                        document.querySelector(".passwordContainer").innerHTML=` 
+                        <input type="password" id="change_OldPassword" class="password">
+                        <span>Password</span>
+                        <input type="password" id="change_OldPasswordRepeat" class="repeat_Password">
+                        <span>Reapeat Password</span>
+                        <button class="newpassbut">
+                            <img src="images/editimg.png">
+                        </button>`;
+
+
+                        document.querySelector(".newpassbut").classList.add("activeediting");
+
+                        document.getElementById("change_OldPassword").addEventListener("change",()=>{
+
+                                if(passwordregex(document.getElementById("change_OldPassword").value)){
+                                    document.getElementById("change_OldPassword").classList.remove("checkinput");
+
+                                }
+                                else{
+                                    document.getElementById("change_OldPassword").classList.add("checkinput");
+                                }
+
+
+
+                        });
+                        
+                        
+                        document.getElementById("change_OldPasswordRepeat").addEventListener("change",()=>{
+                            
+                            if(document.getElementById("change_OldPassword").value===document.getElementById("change_OldPasswordRepeat").value){
+                                document.getElementById("change_OldPasswordRepeat").classList.remove("checkinput");
+
+                            }
+                            else{
+                                document.getElementById("change_OldPasswordRepeat").classList.add("checkinput");
+                            }
+
+
+                        });
+
+
+                        document.querySelector(".newpassbut").addEventListener("click", ()=>{
+
+                            if(changepassword(document.getElementById("change_OldPassword").value,document.getElementById("change_OldPasswordRepeat").value)){
+
+                                loadsecurity();
+
+
+                            }
+
+
+                        });
+    
+    
+        
+    
+    
+    
+    
+                    },800)
+    
+                }
+                else{
+                    active_Editing=false;
+                    document.getElementById("change_Password").value="************";
+                    document.querySelector(".passButton").classList.remove("activeediting");
+                    document.querySelector(".password_Span").innerHTML=`Password`;
+                    document.getElementById("change_Password").classList.add("FORBIDEDIT");
+                    document.getElementById("change_Password").classList.add("checkinput");
+                    setTimeout(()=>{
+                        document.getElementById("change_Password").classList.remove("checkinput");
+                    },500)
+
+                }
+            
+            
+
+           
+              
+
+
+
+            
+            
+
+
+
+        }
+            
+
+
+
+
+    });
+
+
+
+
+}
