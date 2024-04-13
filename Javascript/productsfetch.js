@@ -1,7 +1,7 @@
 import {currentUser} from "./data.js";
-console.log(currentUser);
 
-let innterhtmlForUSER= document.querySelector(".logged-button-span").innerHTML;
+
+
 
 function loadUserStatus(){
 if(!currentUser.login){
@@ -12,7 +12,7 @@ if(!currentUser.login){
 
     setTimeout(() => {
 
-        document.querySelector(".logged-button-span").innerHTML =   ` <div class="logintext">Log in</div>`+innterhtmlForUSER;
+        document.querySelector(".logged-button-span").innerHTML =   ` <div class="logintext">Log in</div>`+`<img class="profile-pic" src=${currentUser.pfp}>`;
 
 
         document.getElementById("overlayID").classList.remove("overlay2nd");
@@ -28,10 +28,11 @@ if(!currentUser.login){
     
 }
 else{
+    
     document.querySelector(".logged-button-span").innerHTML =   `<div class="accountlist">
     <span class="acccenter">Account center</span>
     <span class="logout">log out</span>
-    </div>`+innterhtmlForUSER ; 
+    </div>`+`<img class="profile-pic" src=${currentUser.pfp}>` ; 
 
 
     let logoutbut = document.querySelector(".logout");
@@ -39,8 +40,9 @@ else{
 
     logoutbut.addEventListener( 'click', () => {
         currentUser.login =false;
+        currentUser.pfp ="images/loggedoutpng.png";
 
-        localStorage.setItem('currentUser', JSON.stringify({login: false}));
+        localStorage.setItem('currentUser', JSON.stringify({login: false, pfp:"images/loggedoutpng.png"}));
 
         loadUserStatus();
 });
@@ -58,6 +60,8 @@ else{
 
     }
 }
+
+
 let myProdS;
 
 async function loadproduct(apilink) {
