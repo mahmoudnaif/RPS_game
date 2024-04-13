@@ -1,5 +1,5 @@
 import {arrayOfUsers} from "./data.js";
-console.log(arrayOfUsers);
+
 
 
 function siqnuprender(){
@@ -241,7 +241,18 @@ document.querySelector(".siqnupbut").addEventListener("click", ()=>{
            "username": username.value,
           "First_name": firstname.value,
           "last_name": lastname.value,
-          "pfp": "images/noprofileuser.jpg"
+          "pfp": "images/noprofileuser.jpg",
+          "billingAdress": {
+            "Countryselector": "",
+            "countryIndex": 0,
+            "governorate": "",
+            "Street_Name": "",
+            "home_address": "",
+            "pistol_Code": ""  
+  
+  
+  
+        }
 
 
       })

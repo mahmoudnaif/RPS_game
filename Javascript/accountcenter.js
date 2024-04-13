@@ -1,5 +1,5 @@
 import {currentUser, EditData, editpicture, passwordregex, changepassword, EditAdress} from "./data.js";
-console.log(currentUser);
+
 
 function LoadAccountInfo(){
 
