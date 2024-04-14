@@ -248,11 +248,9 @@ document.querySelector(".siqnupbut").addEventListener("click", ()=>{
             "governorate": "",
             "Street_Name": "",
             "home_address": "",
-            "pistol_Code": ""  
-  
-  
-  
-        }
+            "pistol_Code": "",
+        },
+         "myorders": []
 
 
       })

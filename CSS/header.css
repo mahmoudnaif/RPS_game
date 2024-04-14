@@ -100,9 +100,10 @@ color: rgb(43, 42, 42);
   
     width: 400px ;
 height: 60px;
-display: flex;
-align-items: center;
-justify-content: right;
+display: grid;
+grid-template-columns: auto auto;
+
+
 }
 
 .profile-pic{
@@ -115,11 +116,25 @@ justify-content: right;
    
 }
 .logged-button-span{
+    margin-left: 90px;
+    padding-top: 5px;
+
     padding-left: 50px;
     padding-right: 50px;
-    padding-top: 20px;
+
     padding-bottom: 20px;
 }
+
+.shopping-cart-span{
+padding-left: 50px;
+padding-right: 100px;
+padding-top: 15px;
+padding-bottom: 20px;
+
+
+}
+
+
 
 
 .logged-button-span:hover{
@@ -177,6 +192,55 @@ justify-content: right;
 }
 
 
+.shopping-cart-span:hover{
+    .shoppingcart-list{
+        top: 55px;
+       opacity: 100% !important;
+    }
+}
+
+
+
+.shoppingcart-list{
+    max-height: 400px;
+    overflow-y: auto;
+    z-index: -1;
+    padding-top: 17px;
+    position: absolute;
+    background-color:  rgb(251, 246, 246);
+    width: 400px;
+    top: -500px;
+    right: 20px;
+    opacity: 100%;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    transition: all 0.2s;
+    display: block;
+    align-items: center;
+    flex-direction: column;
+    
+}
+
+.ordered-prod{
+    color: rgb(43, 42, 42);;
+    border-radius: 0;
+    font-size: 20px;
+    width: 100%;
+    height: 90px;
+    text-align: left;
+    cursor: pointer;
+    margin-top: 10px;
+  border-bottom: 1px solid rgb(43, 42, 42);
+  position: relative;
+  
+
+}
+.ordered-prod:hover{
+ opacity: 100%;
+}
+
+
+
 
 
 
@@ -205,8 +269,8 @@ margin-top: 7px;
 
 
 
-.logged-button-span,
-    .shopping-cart-span {
+.logged-button-span
+     {
 
 
     cursor: pointer;
@@ -237,7 +301,152 @@ opacity: 70%;
 .overlay2nd{
     background-color: white;
         width: 100%;
-        height: 100%;
+        height: 1550px;
         position: absolute;
         opacity: 10%;
     }
+
+
+
+    /*shopping cart*/
+   .orderedInfo{
+    vertical-align: bottom;
+    display: inline-grid;
+    
+    grid-template-rows: auto auto;
+    width: 270px;
+    height: 84px;
+    margin-left: 5px;
+    
+   }
+   .orderedInfoTitle{
+    max-height:40px ;
+    font-size: 16px;
+    word-wrap: break-word;
+    overflow: hidden;
+    text-overflow: hidden;
+    margin-top: 10px;
+    
+    min-height: 1px;
+    
+    
+   }
+   .containprderedorice{
+    padding-right: 10px;
+    padding-left: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items:end;
+
+   }
+
+   .orderedPrice{
+    font-size: 18px;
+    
+   }
+   .selectorderQuntity{
+    margin-top: 3px;
+        width: 40px;
+        height: 30px;
+        border-radius: 10px;
+
+   }
+    .ordered-prod .orderedImg{
+        display: inline-block;
+        margin-left: 3px;
+        background-color: white;
+        border-radius: 9px;
+        width: 95px;
+        height: 85px;
+        transition: all 0.15s;
+
+    }
+    .ordered-prod .orderedImg:hover{
+       width: 97px;
+       height: 87px;
+       box-shadow: 0 0 10px 1px rgb(0 0 0 / 30%);
+        img{
+
+            height: 82px;
+        }
+
+    }
+    .ordered-prod .orderedImg img{
+        margin-left: 17px;
+        margin-top: 3px;
+        
+        height: 80px;
+        transition: all 0.15s;
+        
+    }
+
+    .orderedPrice p1, .totalPrice{
+        cursor: pointer;
+        text-decoration:underline;
+        color: rgb(5, 67, 114);
+        transition: all 0.25s;
+     }
+     
+     
+     .orderedPrice p1:hover, .totalPrice:hover{
+         
+         text-decoration:none;
+        opacity: 80%;
+        font-size: 20px;
+      }
+
+      .referToCheckout{
+        display: flex;
+        padding-left: 20px;
+        padding-right: 20px;
+        justify-content:space-between;
+        align-items: center;
+        height: 60px;
+      }
+      .referToCheckout p1{
+        font-size: 17px;
+        
+
+
+      }
+
+      .refretoShoppingcart{
+        width: 110px;
+        height: 35px;
+        border-radius: 20px;
+        border: none;
+        background-color: rgb(43, 42, 42);
+        color: white;
+        transition: all 0.15;
+        cursor: pointer;
+        
+        
+        
+        }
+        
+        .refretoShoppingcart:hover{
+            
+                opacity: 93%;
+                
+                
+        }
+        
+        .refretoShoppingcart:active{
+            
+            opacity: 100%;
+            
+            
+        }
+
+
+
+
+
+        .overlay30000{
+            background-color: rgb(43, 42, 42);
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            opacity: 10%;
+            border-radius: 10px;
+        }

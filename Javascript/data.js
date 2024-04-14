@@ -1,5 +1,5 @@
 export let arrayOfUsers= (localStorage.getItem("usersdata") === null) ? [] :  JSON.parse(localStorage.getItem("usersdata"));
-export let currentUser= (localStorage.getItem("currentUser") === null)? {logged: false} : JSON.parse(localStorage.getItem('currentUser'));
+export let currentUser= (localStorage.getItem("currentUser") === null)? {login: false,pfp:"images/loggedoutpng.png"} : JSON.parse(localStorage.getItem('currentUser'));
 
 export function EditData(edit_value, typeofedit){
    let editSuccess= false;
@@ -246,6 +246,81 @@ if(Countryselector.value!="" && governorate.value!="" && Street_Name.value!="" &
 
 return editSuccess;
 
+
+
+
+}
+
+
+export function AddToCart(prodId){
+  
+  for(let i=0; i < arrayOfUsers.length; i++){
+
+    if(currentUser.email === arrayOfUsers[i].email){
+        
+      let prodExists=false;
+      let prodExistsNum;
+
+      for(let l=0; l< currentUser.myorders.length; l++){
+        if(currentUser.myorders[l].prodId === Number(prodId)){
+            prodExists=true;
+            prodExistsNum=l;
+          break;
+      }
+      }
+
+      if(!prodExists){
+      arrayOfUsers[i].myorders.push({
+        "prodId": Number(prodId),
+        "quantity": 1
+
+
+      });
+      currentUser.myorders.push({
+        "prodId": Number(prodId),
+        "quantity": 1
+
+
+      });
+      localStorage.setItem("currentUser", JSON.stringify(currentUser));
+      localStorage.setItem("usersdata", JSON.stringify(arrayOfUsers));
+      break;
+      }
+      else{
+        arrayOfUsers[i].myorders[prodExistsNum].quantity++;
+        currentUser.myorders[prodExistsNum].quantity++;
+        localStorage.setItem("currentUser", JSON.stringify(currentUser));
+        localStorage.setItem("usersdata", JSON.stringify(arrayOfUsers));
+        break;
+
+      }
+    }
+  }
+
+}
+
+export function changequantity(prodid, newQauntity){
+
+
+  for(let i=0; i < arrayOfUsers.length; i++){
+
+    if(currentUser.email === arrayOfUsers[i].email){
+      for(let l=0; l < currentUser.myorders.length; l++){
+        if(currentUser.myorders[l].prodId === Number(prodid)){
+          currentUser.myorders[l].quantity = Number(newQauntity);
+          arrayOfUsers[i].myorders[l].quantity = Number(newQauntity);
+          localStorage.setItem("currentUser", JSON.stringify(currentUser));
+          localStorage.setItem("usersdata", JSON.stringify(arrayOfUsers));
+         break;
+        }
+
+
+
+      }
+      break;
+    }
+
+  }
 
 
 

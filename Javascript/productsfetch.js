@@ -1,6 +1,5 @@
-import {currentUser} from "./data.js";
-
-
+import {AddToCart, currentUser, changequantity} from "./data.js";
+console.log(currentUser);
 
 
 function loadUserStatus(){
@@ -119,7 +118,119 @@ prodHtml+=`
 
     document.querySelector(".myoutline").innerHTML= prodHtml;
 
+if(currentUser.login){
+    document.querySelectorAll(".add-to-cart").forEach((button)=>{
+        button.addEventListener("click",()=>{
+            document.getElementById("overlayID").classList.add("overlay2nd");
+
+            setTimeout(()=>{
+                document.getElementById("overlayID").classList.remove("overlay2nd");
+                AddToCart(button.dataset.prodid);
+          loadshoppingcart();
+            },800)
+
+       
+
+        });
+
+})
+
+
+
   }
+
+}
+
+
+async function loadshoppingcart(){
+
+    let htmlCart=``;
+    let totalprice=0;
+    for(let i=0; i<currentUser.myorders.length; i++){
+
+    const x = await fetch(`https://fakestoreapi.com/products/${currentUser.myorders[i].prodId}`);
+    let carted_Prods = await x.json();
+    totalprice+= Number(carted_Prods.price)*100;
+    htmlCart+=`
+    <div class="ordered-prod">
+    <span id=${carted_Prods.id}></span>
+<div class="orderedImg"><img src="${carted_Prods.image}" ></div>
+<div class="orderedInfo">
+        <div class="containprderedorice">
+            <span class="orderedPrice">
+                price: <p1>${carted_Prods.price}</p1>
+            </span>
+            <select class="selectorderQuntity"   data-prodid=${currentUser.myorders[i].prodId}>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+                <option value="15">15</option>
+                <option value="17">16</option>
+                <option value="17">17</option>
+                <option value="18">18</option>
+                <option value="19">19</option>
+                <option value="20">20</option>
+            </select>
+        </div>
+    
+    <div class="orderedInfoTitle" >
+        $${carted_Prods.title}
+    
+     </div>  
+
+</div>
+
+</div>
+    
+    
+    
+    `    
+ }
+htmlCart+=`<div class="referToCheckout">
+<p1>total: <p1 class="totalPrice">${totalprice/100}</p1></p1>
+<button class="refretoShoppingcart">shopping-cart</button>
+
+</div>`;
+document.querySelector(".shoppingcart-list").innerHTML=htmlCart;
+
+let countprods = document.querySelectorAll(".selectorderQuntity");
+
+for(let i=0; i<countprods.length; i++){
+countprods[i].selectedIndex= currentUser.myorders[i].quantity-1;
+
+
+countprods[i].addEventListener("change", () => {
+    
+    changequantity(countprods[i].dataset.prodid, countprods[i].value);
+    document.getElementById(countprods[i].dataset.prodid).classList.add("overlay30000");
+    setTimeout(()=>{
+        document.getElementById(countprods[i].dataset.prodid).classList.remove("overlay30000");
+
+    },800)
+
+});
+
+
+}
+
+
+
+
+
+
+
+}
 
   
 
@@ -214,6 +325,24 @@ else{
     
     
     });
+
+
+
+
+if(currentUser.myorders.length>0){
+
+
+document.querySelector(".shopping-cart-span").innerHTML=`
+<div class="shoppingcart-list">
+    
+
+
+    
+    </div>`+document.querySelector(".shopping-cart-span").innerHTML;
+
+
+    loadshoppingcart();
+}
 
 
  
