@@ -123,10 +123,17 @@ if(currentUser.login){
         button.addEventListener("click",()=>{
             document.getElementById("overlayID").classList.add("overlay2nd");
 
+
+            let countprods = document.querySelectorAll(".selectorderQuntity");
+            if(countprods){
+            for(let i=0; i<countprods.length; i++){
+            countprods[i].selectedIndex= currentUser.myorders[i].quantity-1;
+            }
+        }
             setTimeout(()=>{
                 document.getElementById("overlayID").classList.remove("overlay2nd");
                 AddToCart(button.dataset.prodid);
-          loadshoppingcart();
+        
             },800)
 
        
@@ -209,10 +216,10 @@ let countprods = document.querySelectorAll(".selectorderQuntity");
 for(let i=0; i<countprods.length; i++){
 countprods[i].selectedIndex= currentUser.myorders[i].quantity-1;
 
-
 countprods[i].addEventListener("change", () => {
     
     changequantity(countprods[i].dataset.prodid, countprods[i].value);
+
     document.getElementById(countprods[i].dataset.prodid).classList.add("overlay30000");
     setTimeout(()=>{
         document.getElementById(countprods[i].dataset.prodid).classList.remove("overlay30000");
