@@ -328,7 +328,7 @@ else{
 
 
 
-
+if(currentUser.login){
 if(currentUser.myorders.length>0){
 
 
@@ -344,7 +344,7 @@ document.querySelector(".shopping-cart-span").innerHTML=`
     loadshoppingcart();
 }
 
-
+}
  
 
 
