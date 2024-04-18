@@ -122,17 +122,14 @@ if(currentUser.login){
     document.querySelectorAll(".add-to-cart").forEach((button)=>{
         button.addEventListener("click",()=>{
             document.getElementById("overlayID").classList.add("overlay2nd");
+AddToCart(button.dataset.prodid);
 
-
-            let countprods = document.querySelectorAll(".selectorderQuntity");
-            if(countprods){
-            for(let i=0; i<countprods.length; i++){
-            countprods[i].selectedIndex= currentUser.myorders[i].quantity-1;
-            }
-        }
+loadshoppingcart();
+       
+        
             setTimeout(()=>{
                 document.getElementById("overlayID").classList.remove("overlay2nd");
-                AddToCart(button.dataset.prodid);
+                
         
             },800)
 
@@ -157,7 +154,7 @@ async function loadshoppingcart(){
 
     const x = await fetch(`https://fakestoreapi.com/products/${currentUser.myorders[i].prodId}`);
     let carted_Prods = await x.json();
-    totalprice+= Number(carted_Prods.price)*100;
+
     htmlCart+=`
     <div class="ordered-prod">
     <span id=${carted_Prods.id}></span>
@@ -202,14 +199,36 @@ async function loadshoppingcart(){
     
     
     
-    `    
- }
+    `;
+ totalprice+= Number(carted_Prods.price)*100*Number(currentUser.myorders[i].quantity);
+}
+
+
+
 htmlCart+=`<div class="referToCheckout">
 <p1>total: <p1 class="totalPrice">${totalprice/100}</p1></p1>
 <button class="refretoShoppingcart">shopping-cart</button>
 
 </div>`;
-document.querySelector(".shoppingcart-list").innerHTML=htmlCart;
+
+
+if(document.querySelector(".shoppingcart-list")){
+    document.querySelector(".shoppingcart-list").innerHTML=htmlCart;
+}
+else{
+    document.querySelector(".shopping-cart-span").innerHTML=`
+<div class="shoppingcart-list">
+    
+
+
+    
+    </div>`+document.querySelector(".shopping-cart-span").innerHTML;
+    document.querySelector(".shoppingcart-list").innerHTML=htmlCart;
+
+
+
+
+}
 
 let countprods = document.querySelectorAll(".selectorderQuntity");
 

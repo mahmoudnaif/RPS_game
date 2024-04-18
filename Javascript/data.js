@@ -325,3 +325,41 @@ export function changequantity(prodid, newQauntity){
 
 
 }
+
+
+
+
+export function removeorderprod(prodid){
+
+let newlist= [];
+
+for(let i=0; i<currentUser.myorders.length; i++){
+  if(currentUser.myorders[i].prodId == prodid ){
+    continue;
+  }
+  newlist.push(currentUser.myorders[i]);
+
+
+}
+currentUser.myorders = newlist;
+
+for(let i=0; i < arrayOfUsers.length; i++){
+
+  if(currentUser.email === arrayOfUsers[i].email){
+    arrayOfUsers[i].myorders = newlist;
+    console.log(arrayOfUsers[i].myorders);
+
+    break;
+  }
+}
+console.log(currentUser.myorders);
+
+localStorage.setItem("currentUser", JSON.stringify(currentUser));
+localStorage.setItem("usersdata", JSON.stringify(arrayOfUsers));
+
+
+}
+
+
+
+
