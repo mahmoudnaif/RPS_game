@@ -1,5 +1,5 @@
-import {AddToCart, currentUser, changequantity} from "./data.js";
-console.log(currentUser);
+import {AddToCart, currentUser, changequantity, arrayOfUsers} from "./data.js";
+console.log(arrayOfUsers);
 
 
 function loadUserStatus(){
