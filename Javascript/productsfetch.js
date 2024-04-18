@@ -118,13 +118,16 @@ prodHtml+=`
 
     document.querySelector(".myoutline").innerHTML= prodHtml;
 
-if(currentUser.login){
+
     document.querySelectorAll(".add-to-cart").forEach((button)=>{
         button.addEventListener("click",()=>{
-            document.getElementById("overlayID").classList.add("overlay2nd");
-AddToCart(button.dataset.prodid);
 
-loadshoppingcart();
+            if(currentUser.login){
+
+            document.getElementById("overlayID").classList.add("overlay2nd");
+            AddToCart(button.dataset.prodid);
+
+            loadshoppingcart();
        
         
             setTimeout(()=>{
@@ -132,6 +135,10 @@ loadshoppingcart();
                 
         
             },800)
+        }
+        else{
+           window.location.href="loggingin.html";
+        }
 
        
 
@@ -141,7 +148,7 @@ loadshoppingcart();
 
 
 
-  }
+  
 
 }
 
