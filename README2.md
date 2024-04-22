@@ -48,7 +48,6 @@ This repository contains the source code for an e-commerce shopping website, inc
 
 ## JavaScript Files
 
-- **abdoneasha.js**: Handles user interactions, events, and data management across different parts of the website.
 - **accountcenter.js**: Manages the account center page, handling user interactions and events for account-related functionalities such as viewing and updating account information.
 - **data.js**: Contains data for the website, including user data and product information.
 - **loggingarea.js**: Manages login functionality, handling user input, authentication, and redirection for the login page.
