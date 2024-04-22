@@ -2,6 +2,25 @@
 
 This repository contains the source code for an e-commerce shopping website, including HTML, JavaScript, and CSS files. The project is designed to provide an interactive shopping experience for users.
 
+![Main Page](Screenshots/Mainpage.jpeg)
+
+## Table of Contents
+
+- [Contents](#contents)
+    - [Main Page](#main-page)
+    - [Account Center](#account-center)
+    - [Login Page](#login-page)
+- [Pages](#pages)
+    - [Main Page](#main-page)
+    - [Account Center](#account-center)
+    - [Login Page](#login-page)
+- [HTML Files](#html-files)
+    - [Usage](#usage)
+    - [Stylesheets](#stylesheets)
+- [JavaScript Files](#javascript-files)
+- [Screenshots](#screenshots)
+- [Contact](#contact)
+
 ## Contents
 
 - **Main Page**: The primary page of the shopping website that provides an overview of available products and a search feature.
@@ -55,6 +74,28 @@ This repository contains the source code for an e-commerce shopping website, inc
 
 These JavaScript files work together to support the different functionalities of the website, providing user interactivity and dynamic content management across the website's pages.
 
+## Screenshots
+
+- **Main Page**:
+
+    ![Main Page](Screenshots/Mainpage.jpeg)
+    - The main page shows the header, search bar, and product display area, allowing users to browse and search for products.
+
+- **Signin Screen**:
+
+    ![Sign-in](Screenshots/Signin.jpeg)
+    - The sign-in screen allows users to log in to their accounts to access personalized features.
+
+- **Signup Screen**:
+
+    ![Sign-up](Screenshots/Signup.jpeg)
+    - The sign-up screen allows users to create new accounts to access the website's features.
+
+- **Account Information**:
+
+    ![Account Information](Screenshots/Account_information.jpeg)
+    - The account information page allows users to view and manage their personal information, security settings, and billing details.
+
 ## Contact
 
-You can contact me via email at [mahmoudnaif788@gmail.com](mailto:mahmoudnaif788@gmail.com).
+For any questions or feedback, You can contact me via email at [mahmoudnaif788@gmail.com](mailto:mahmoudnaif788@gmail.com).
